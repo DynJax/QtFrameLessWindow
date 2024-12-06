@@ -25,6 +25,10 @@ jobs:
         target: 'desktop'
         arch: 'win64_msvc2019_64'
     
+    # 添加 MSVC 环境变量设置
+    - name: Setup MSVC Environment
+      uses: ilammy/msvc-dev-cmd@v1
+    
     - name: Build
       run: |
         mkdir build
@@ -32,7 +36,6 @@ jobs:
         qmake ../QtFrameLessWindow.pro
         nmake
     
-    # 更新到 v4 版本
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
