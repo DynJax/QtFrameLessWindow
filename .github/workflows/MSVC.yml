@@ -14,6 +14,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    # 列出目录内容，帮助调试
+    - name: List Directory
+      run: |
+        dir
+        dir /s *.pro
+    
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.1
     
@@ -25,15 +31,18 @@ jobs:
         target: 'desktop'
         arch: 'win64_msvc2019_64'
     
-    # 添加 MSVC 环境变量设置
     - name: Setup MSVC Environment
       uses: ilammy/msvc-dev-cmd@v1
     
+    # 修改为正确的 .pro 文件路径
     - name: Build
       run: |
+        cd
         mkdir build
         cd build
-        qmake ../QtFrameLessWindow.pro
+        cd
+        dir /s *.pro
+        qmake ../FramelessWindow.pro  # 或者其他实际的文件名
         nmake
     
     - name: Upload artifacts
