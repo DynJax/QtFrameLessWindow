@@ -1,6 +1,7 @@
 name: Windows Build
 
 on:
+  workflow_dispatch:    # 添加手动触发器
   push:
     branches: [ main ]
   pull_request:
