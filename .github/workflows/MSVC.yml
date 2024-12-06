@@ -18,7 +18,6 @@ jobs:
     - name: List Directory
       run: |
         dir
-        dir /s *.pro
     
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.1
@@ -41,7 +40,7 @@ jobs:
         mkdir build
         cd build
         cd
-        dir /s *.pro
+        dir
         qmake ../FramelessWindow.pro  # 或者其他实际的文件名
         nmake
     
